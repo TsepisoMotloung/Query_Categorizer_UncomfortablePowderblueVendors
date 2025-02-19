@@ -41,21 +41,13 @@ df["Extracted Product"] = df["Ref"].astype(str).apply(refine_product_extraction)
 df.head()
 
 
-# Export to Excel
-output_path = "Processed_Products.xlsx"
+# Export to CSV files
+df.to_csv('full_data.csv', index=False)
+df[['Ref', 'Extracted Product']].to_csv('extracted_products.csv', index=False)
 
-
-# Export with specific columns
-df[['Ref', 'Extracted Product']].to_excel(output_path, index=False)
-
-# Export to a specific sheet name
-with pd.ExcelWriter(output_path) as writer:
-    df.to_excel(writer, sheet_name='Processed Data', index=False)
-
-# Export with multiple sheets
-with pd.ExcelWriter(output_path) as writer:
-    df.to_excel(writer, sheet_name='Full Data', index=False)
-    df[['Ref', 'Extracted Product']].to_excel(writer, sheet_name='Extracted Products', index=False)
+print("\nData exported successfully to:")
+print("1. full_data.csv - Contains all columns")
+print("2. extracted_products.csv - Contains only Ref and Extracted Product columns")
 
 
 print(df)
