@@ -8,7 +8,7 @@ def categorize_paypoint(name):
         return "Cash"
     elif "debit order" in name_lower or "debit order 01" in name_lower:
         return "Debit Order O1"
-    elif "government stop order" in name_lower:
+    elif any(term in name_lower for term in ["government stop order", "ministry", "judiciary"]):
         return "Government Stop Order"
     elif "payment deduction" in name_lower:
         return "Payment Deduction"
