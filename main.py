@@ -11,6 +11,11 @@ def categorize_paypoint(name):
     elif any(term in name_lower for term in ["government stop order", "ministry", "judiciary"]):
         return "Government Stop Order"
     elif "payment deduction" in name_lower:
+        # Extract any numbers that follow "payment deduction"
+        import re
+        number = re.search(r'payment deduction\s*(\d+)', name_lower)
+        if number:
+            return f"Payment Deduction {number.group(1)}"
         return "Payment Deduction"
     else:
         return "Uncategorized"
