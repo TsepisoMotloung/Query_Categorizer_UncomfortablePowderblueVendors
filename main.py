@@ -6,8 +6,12 @@ def categorize_paypoint(name):
     name_lower = str(name).lower()
     if "cash" in name_lower:
         return "Cash"
-    elif "debit order" in name_lower or "debit order 01" in name_lower:
-        return "Debit Order O1"
+    elif "debit order" in name_lower:
+        import re
+        number = re.search(r'debit order\s*(\d+)', name_lower)
+        if number:
+            return f"Debit Order {number.group(1)}"
+        return "Debit Order"
     elif any(term in name_lower for term in ["government stop order", "ministry", "judiciary"]):
         return "Government Stop Order"
     elif "payment deduction" in name_lower:
