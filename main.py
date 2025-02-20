@@ -1,8 +1,7 @@
-# Load the first sheet into a DataFrame and display the first few rows
-df = pd.read_excel(xls, sheet_name="sheet1")
-df.head()
 
-# Define categorization function
+import pandas as pd
+import os
+
 def categorize_paypoint(name):
     name_lower = str(name).lower()
     if "cash" in name_lower:
@@ -16,17 +15,31 @@ def categorize_paypoint(name):
     else:
         return "Uncategorized"
 
-# Apply categorization
-df["Category"] = df["PaypointName(New)"].apply(categorize_paypoint)
+def main():
+    # Read the Excel file
+    excel_file = "0124430 Do Not Use Paypoint (1).xlsx"
+    if not os.path.exists(excel_file):
+        print(f"Error: {excel_file} not found")
+        return
 
-# Show results
-df[["PaypointName(New)", "Category"]].head(10)
+    # Load the first sheet into a DataFrame
+    df = pd.read_excel(excel_file, sheet_name="sheet1")
+    print("First few rows of the original data:")
+    print(df.head())
 
-# Define CSV file path
-csv_file_path = "/mnt/data/categorized_paypoints.csv"
+    # Apply categorization
+    df["Category"] = df["PaypointName(New)"].apply(categorize_paypoint)
 
-# Save the categorized data to CSV
-df[["PaypointName(New)", "Category"]].to_csv(csv_file_path, index=False)
+    # Show results
+    print("\nSample of categorized data:")
+    print(df[["PaypointName(New)", "Category"]].head(10))
 
-# Provide download link
-csv_file_path
+    # Define CSV file path
+    csv_file_path = "categorized_paypoints.csv"
+
+    # Save the categorized data to CSV
+    df[["PaypointName(New)", "Category"]].to_csv(csv_file_path, index=False)
+    print(f"\nData has been saved to {csv_file_path}")
+
+if __name__ == "__main__":
+    main()
