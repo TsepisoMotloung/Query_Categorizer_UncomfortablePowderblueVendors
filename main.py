@@ -10,16 +10,18 @@ df = df.dropna(axis=1, how='all')
 df.dropna(how='all', inplace=True)
 df.reset_index(drop=True, inplace=True)
 
-# Set headers and clean data
-df.columns = df.iloc[0]
-df = df[1:].reset_index(drop=True)
-df = df.loc[:, ~df.columns.isna()]
+# Identify the first row with actual data (not headers)
+first_data_row = df.index[df.iloc[:, 0].notna()][0]
 
-# Remove 'budget' columns and clean column names
+# Set proper column names from the row before the first data row
+df.columns = df.iloc[first_data_row - 1]
+df = df.iloc[first_data_row:].reset_index(drop=True)
+
+# Remove budget columns
 columns_to_keep = [col for col in df.columns if 'budget' not in str(col).lower()]
 df = df[columns_to_keep]
 
-# Define the correct order of months (Jan 23 to Dec 24)
+# Define the correct order of months
 month_order = [
     'Jan 23', 'Feb 23', 'Mar 23', 'Apr 23', 'May 23', 'Jun 23', 
     'Jul 23', 'Aug 23', 'Sep 23', 'Oct 23', 'Nov 23', 'Dec 23',
@@ -27,33 +29,34 @@ month_order = [
     'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24'
 ]
 
-# Clean column names and standardize format
+# Clean column names
 def clean_column_name(col):
     col = str(col).strip()
-    if any(month in col.lower() for month in ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']):
-        # Extract month and year
-        for month in ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']:
-            if month.lower() in col.lower():
-                year = '23' if '2023' in col or '23' in col else '24'
-                return f"{month} {year}"
+    for month in ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']:
+        if month.lower() in col.lower():
+            if '2023' in col or '23' in col:
+                return f"{month} 23"
+            elif '2024' in col or '24' in col:
+                return f"{month} 24"
     return col
 
-# Clean and rename columns
+# Clean column names
 df.columns = [clean_column_name(col) for col in df.columns]
 
-# Identify non-month columns (like PaypointName, etc.)
-non_month_columns = [col for col in df.columns if col not in month_order]
+# Separate month and non-month columns
+month_columns = [col for col in df.columns if any(month in col for month in month_order)]
+non_month_columns = [col for col in df.columns if col not in month_columns]
 
-# Reorder columns: non-month columns first, then months in chronological order
-available_months = [m for m in month_order if m in df.columns]
-final_column_order = non_month_columns + available_months
+# Sort month columns according to month_order
+sorted_month_columns = [m for m in month_order if m in month_columns]
 
-# Reorder the columns
+# Combine columns in correct order
+final_column_order = non_month_columns + sorted_month_columns
 df = df[final_column_order]
 
 # Export to CSV
 output_file = "cleaned_data.csv"
 df.to_csv(output_file, index=False)
 print(f"Data has been cleaned and exported to {output_file}")
-print("\nColumn names in the cleaned data:")
+print("\nColumns in the cleaned data:")
 print(df.columns.tolist())
