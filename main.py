@@ -1,54 +1,36 @@
-
 import pandas as pd
-import os
 
-def categorize_paypoint(name):
-    name_lower = str(name).lower()
-    if "cash" in name_lower:
-        return "Cash"
-    elif "debit order" in name_lower:
-        import re
-        number = re.search(r'debit order\s*(\d+)', name_lower)
-        if number:
-            return f"Debit Order {number.group(1)}"
-        return "Debit Order"
-    elif any(term in name_lower for term in ["government stop order", "ministry", "judiciary"]):
-        return "Government Stop Order"
-    elif "payment deduction" in name_lower:
-        # Extract any numbers that follow "payment deduction"
-        import re
-        number = re.search(r'payment deduction\s*(\d+)', name_lower)
-        if number:
-            return f"Payment Deduction {number.group(1)}"
-        return "Payment Deduction"
-    else:
-        return "Uncategorized"
+# Load the Excel file
+file_path = "Data Cat.xlsx"
+xls = pd.ExcelFile(file_path)
 
-def main():
-    # Read the Excel file
-    excel_file = "0124430 Do Not Use Paypoint (1).xlsx"
-    if not os.path.exists(excel_file):
-        print(f"Error: {excel_file} not found")
-        return
+# Display sheet names to understand the structure
+xls.sheet_names
 
-    # Load the first sheet into a DataFrame
-    df = pd.read_excel(excel_file, sheet_name="sheet1")
-    print("First few rows of the original data:")
-    print(df.head())
+# Load the data sheet
+df = pd.read_excel(xls, sheet_name="Data")
 
-    # Apply categorization
-    df["Category"] = df["PaypointName(New)"].apply(categorize_paypoint)
+# Display the first few rows to inspect the structure
+df.head()
+# Identify the actual header row (usually the first meaningful row in financial reports)
+df_cleaned = pd.read_excel(xls, sheet_name="Data", skiprows=6)  # Skipping metadata rows
 
-    # Show results
-    print("\nSample of categorized data:")
-    print(df[["PaypointName(New)", "Category"]].head(10))
+# Drop completely empty columns
+df_cleaned = df_cleaned.dropna(axis=1, how='all')
 
-    # Define CSV file path
-    csv_file_path = "categorized_paypoints.csv"
+# Display first few rows after cleanup
+df_cleaned.head()
+# Identify the first valid row that contains column headers
+df_cleaned.dropna(how='all', inplace=True)  # Remove fully empty rows
+df_cleaned.reset_index(drop=True, inplace=True)  # Reset index
 
-    # Save the categorized data to CSV
-    df[["PaypointName(New)", "Category"]].to_csv(csv_file_path, index=False)
-    print(f"\nData has been saved to {csv_file_path}")
+# Set the first row as the header
+df_cleaned.columns = df_cleaned.iloc[0]
+df_cleaned = df_cleaned[1:].reset_index(drop=True)
 
-if __name__ == "__main__":
-    main()
+# Drop any remaining unnamed columns with NaN headers
+df_cleaned = df_cleaned.loc[:, ~df_cleaned.columns.isna()]
+
+# Display cleaned column names
+df_cleaned.head()
+print(df_cleaned.columns)
