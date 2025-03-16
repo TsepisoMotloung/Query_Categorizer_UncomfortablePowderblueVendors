@@ -1,41 +1,59 @@
+
 import pandas as pd
 
 # Load the Excel file
 file_path = "Data Cat.xlsx"
-xls = pd.ExcelFile(file_path)
+df = pd.read_excel(file_path, sheet_name="Data", skiprows=6)
 
-# Display sheet names to understand the structure
-xls.sheet_names
+# Clean the data
+df = df.dropna(axis=1, how='all')
+df.dropna(how='all', inplace=True)
+df.reset_index(drop=True, inplace=True)
 
-# Load the data sheet
-df = pd.read_excel(xls, sheet_name="Data")
+# Set headers and clean data
+df.columns = df.iloc[0]
+df = df[1:].reset_index(drop=True)
+df = df.loc[:, ~df.columns.isna()]
 
-# Display the first few rows to inspect the structure
-df.head()
-# Identify the actual header row (usually the first meaningful row in financial reports)
-df_cleaned = pd.read_excel(xls, sheet_name="Data", skiprows=6)  # Skipping metadata rows
+# Remove 'budget' columns and clean column names
+columns_to_keep = [col for col in df.columns if 'budget' not in str(col).lower()]
+df = df[columns_to_keep]
 
-# Drop completely empty columns
-df_cleaned = df_cleaned.dropna(axis=1, how='all')
+# Define the correct order of months (Jan 23 to Dec 24)
+month_order = [
+    'Jan 23', 'Feb 23', 'Mar 23', 'Apr 23', 'May 23', 'Jun 23', 
+    'Jul 23', 'Aug 23', 'Sep 23', 'Oct 23', 'Nov 23', 'Dec 23',
+    'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 
+    'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24'
+]
 
-# Display first few rows after cleanup
-df_cleaned.head()
-# Identify the first valid row that contains column headers
-df_cleaned.dropna(how='all', inplace=True)  # Remove fully empty rows
-df_cleaned.reset_index(drop=True, inplace=True)  # Reset index
+# Clean column names and standardize format
+def clean_column_name(col):
+    col = str(col).strip()
+    if any(month in col.lower() for month in ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']):
+        # Extract month and year
+        for month in ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']:
+            if month.lower() in col.lower():
+                year = '23' if '2023' in col or '23' in col else '24'
+                return f"{month} {year}"
+    return col
 
-# Set the first row as the header
-df_cleaned.columns = df_cleaned.iloc[0]
-df_cleaned = df_cleaned[1:].reset_index(drop=True)
+# Clean and rename columns
+df.columns = [clean_column_name(col) for col in df.columns]
 
-# Drop any remaining unnamed columns with NaN headers
-df_cleaned = df_cleaned.loc[:, ~df_cleaned.columns.isna()]
+# Identify non-month columns (like PaypointName, etc.)
+non_month_columns = [col for col in df.columns if col not in month_order]
 
-# Display cleaned column names
-df_cleaned.head()
-print(df_cleaned.columns)
+# Reorder columns: non-month columns first, then months in chronological order
+available_months = [m for m in month_order if m in df.columns]
+final_column_order = non_month_columns + available_months
+
+# Reorder the columns
+df = df[final_column_order]
 
 # Export to CSV
 output_file = "cleaned_data.csv"
-df_cleaned.to_csv(output_file, index=False)
-print(f"\nData has been exported to {output_file}")
+df.to_csv(output_file, index=False)
+print(f"Data has been cleaned and exported to {output_file}")
+print("\nColumn names in the cleaned data:")
+print(df.columns.tolist())
