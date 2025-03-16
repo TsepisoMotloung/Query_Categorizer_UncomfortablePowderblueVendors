@@ -34,3 +34,8 @@ df_cleaned = df_cleaned.loc[:, ~df_cleaned.columns.isna()]
 # Display cleaned column names
 df_cleaned.head()
 print(df_cleaned.columns)
+
+# Export to CSV
+output_file = "cleaned_data.csv"
+df_cleaned.to_csv(output_file, index=False)
+print(f"\nData has been exported to {output_file}")
