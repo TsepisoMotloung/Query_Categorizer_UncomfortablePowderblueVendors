@@ -1,168 +1,3 @@
-# import os
-# import tkinter as tk
-# from tkinter import filedialog, messagebox
-# import pandas as pd
-
-# class QueryCategorizationTool:
-
-#   def __init__(self, master):
-#     self.master = master
-#     master.title("Query Categorization Tool")
-#     master.geometry("500x400")
-
-#     # Input Directory Section
-#     self.input_label = tk.Label(
-#         master,
-#         text="Select Input Directory with Query Files:",
-#         font=("Arial", 10))
-#     self.input_label.pack(pady=(20, 5))
-
-#     self.input_button = tk.Button(master,
-#                                   text="Choose Input Directory",
-#                                   command=self.select_input_directory)
-#     self.input_button.pack(pady=10)
-
-#     self.input_path_display = tk.Label(master,
-#                                        text="",
-#                                        font=("Arial", 10, "italic"))
-#     self.input_path_display.pack(pady=5)
-
-#     # Output Directory Section
-#     self.output_label = tk.Label(
-#         master,
-#         text="Select Output Directory for Categorized Files:",
-#         font=("Arial", 10))
-#     self.output_label.pack(pady=(20, 5))
-
-#     self.output_button = tk.Button(master,
-#                                    text="Choose Output Directory",
-#                                    command=self.select_output_directory)
-#     self.output_button.pack(pady=10)
-
-#     self.output_path_display = tk.Label(master,
-#                                         text="",
-#                                         font=("Arial", 10, "italic"))
-#     self.output_path_display.pack(pady=5)
-
-#     # Process Button
-#     self.process_button = tk.Button(master,
-#                                     text="Categorize Queries",
-#                                     command=self.process_files,
-#                                     state=tk.DISABLED)
-#     self.process_button.pack(pady=20)
-
-#     # Status Display
-#     self.status_label = tk.Label(master,
-#                                  text="",
-#                                  font=("Arial", 10),
-#                                  fg="green")
-#     self.status_label.pack(pady=10)
-
-#     # Track directories
-#     self.input_directory = None
-#     self.output_directory = None
-
-#   def select_input_directory(self):
-#     self.input_directory = filedialog.askdirectory(
-#         title="Select Directory with Query Files")
-#     if self.input_directory:
-#       self.input_path_display.config(text=self.input_directory)
-#       self.check_process_readiness()
-
-#   def select_output_directory(self):
-#     self.output_directory = filedialog.askdirectory(
-#         title="Select Output Directory for Categorized Files")
-#     if self.output_directory:
-#       self.output_path_display.config(text=self.output_directory)
-#       self.check_process_readiness()
-
-#   def check_process_readiness(self):
-#     if self.input_directory and self.output_directory:
-#       self.process_button.config(state=tk.NORMAL)
-
-#   def categorize_query(self, query):
-#     query = str(query).lower()  # Convert to lowercase for better matching
-#     categories = {
-#         "Date of Birth Issues": ["date of birth"],
-#         "ID Related": ["id", "identity"],
-#         "Beneficiary Issues": ["beneficiary"],
-#         "Age Qualification": ["age qualification"],
-#         "Premium Issues": ["premium"],
-#         "Signature Issues": ["signature"],
-#         "Bank Confirmation": ["bank confirmation", "bank conformation"],
-#         "Territorial Limits": ["territorial limits"],
-#         "Affordability": ["affordability"],
-#         "Rider Benefits": ["rider benefit"],
-#         "Deduction Issues": ["deduction"]
-#     }
-
-#     for category, keywords in categories.items():
-#       if any(keyword in query for keyword in keywords):
-#         return category
-#     return "Other"
-
-#   def process_files(self):
-#     try:
-#       # Reset status
-#       self.status_label.config(text="Processing...", fg="blue")
-#       self.master.update_idletasks()
-
-#       # Find Excel files
-#       excel_files = [
-#           f for f in os.listdir(self.input_directory)
-#           if f.endswith(('.xlsx', '.xls')) and not f.startswith('~$')
-#       ]
-
-#       if not excel_files:
-#         messagebox.showwarning(
-#             "No Files", "No Excel files found in the selected directory.")
-#         return
-
-#       processed_count = 0
-#       for file in excel_files:
-#         try:
-#           file_path = os.path.join(self.input_directory, file)
-#           df = pd.read_excel(file_path)
-
-#           # Check if 'Query' column exists
-#           if 'Query' not in df.columns:
-#             messagebox.showwarning("Column Missing",
-#                                    f"No 'Query' column in {file}. Skipping.")
-#             continue
-
-#           # Categorize
-#           df['Category'] = df['Query'].apply(self.categorize_query)
-
-#           # Save to output directory (changed to CSV)
-#           output_file = os.path.join(
-#               self.output_directory,
-#               f"Categorized_{os.path.splitext(file)[0]}.csv")
-#           df.to_csv(output_file, index=False)
-#           processed_count += 1
-
-#         except Exception as file_error:
-#           messagebox.showerror("File Processing Error",
-#                                f"Error processing {file}: {str(file_error)}")
-
-#       # Final status update
-#       self.status_label.config(
-#           text=f"Processed {processed_count} files successfully!", fg="green")
-#       messagebox.showinfo(
-#           "Complete",
-#           f"Processed {processed_count} files.\nCheck output directory.")
-
-#     except Exception as e:
-#       messagebox.showerror("Error", str(e))
-#       self.status_label.config(text="Processing failed", fg="red")
-
-# def main():
-#   root = tk.Tk()
-#   app = QueryCategorizationTool(root)
-#   root.mainloop()
-
-# if __name__ == "__main__":
-#   main()
-
 import os
 import re
 import tkinter as tk
@@ -170,9 +5,25 @@ from tkinter import filedialog, messagebox, ttk
 import pandas as pd
 import nltk
 
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('stopwords')
+import nltk
+import os
+
+def initialize_nltk():
+    """Initialize NLTK by downloading required datasets"""
+    nltk_data_dir = os.path.join(os.path.expanduser('~'), 'nltk_data')
+    os.makedirs(nltk_data_dir, exist_ok=True)
+
+    required_packages = ['punkt', 'wordnet', 'stopwords']
+    for package in required_packages:
+        try:
+            nltk.download(package, quiet=True, raise_on_error=True)
+            print(f"Successfully downloaded {package}")
+        except Exception as e:
+            print(f"Error downloading {package}: {str(e)}")
+            raise
+
+# Initialize NLTK packages
+initialize_nltk()
 
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
