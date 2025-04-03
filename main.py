@@ -945,12 +945,15 @@ class AdvancedQueryCategorizationTool:
 
 
     def run(self):
-      """Start the application main loop"""
-      self.master.mainloop()
+        """Start the application main loop"""
+        self.master.mainloop()
 
 
-    # Run the application
-    if __name__ == "__main__":
-      root = tk.Tk()
-      app = AdvancedQueryCategorizationTool(root)
-      app.run()
+def main():
+    root = tk.Tk()
+    app = AdvancedQueryCategorizationTool(root)
+    app.run()
+
+
+if __name__ == "__main__":
+    main()
