@@ -1,3 +1,6 @@
+
+from nltk.tokenize import punkt
+
 import os
 import re
 import tkinter as tk
