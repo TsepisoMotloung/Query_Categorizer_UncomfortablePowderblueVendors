@@ -908,9 +908,90 @@ class AdvancedQueryCategorizationTool:
 
 
 def main():
-  root = tk.Tk()
-  app = AdvancedQueryCategorizationTool(root)
-  app.run()
+    # Command line interface implementation
+    print("Advanced Query Categorization Tool")
+    print("=================================")
+    
+    categorizer = AdvancedQueryCategorizer()
+    
+    while True:
+        print("\nOptions:")
+        print("1. Test single query")
+        print("2. Process files")
+        print("3. Run batch tests")
+        print("4. Exit")
+        
+        choice = input("\nEnter your choice (1-4): ")
+        
+        if choice == '1':
+            query = input("Enter query to test: ")
+            category = categorizer.categorize_query(query, verbose=True)
+            print(f"\nCategorized as: {category}")
+            
+        elif choice == '2':
+            input_dir = input("Enter input directory path: ")
+            output_dir = input("Enter output directory path: ")
+            
+            if not os.path.exists(input_dir) or not os.path.exists(output_dir):
+                print("Invalid directory path!")
+                continue
+                
+            excel_files = [f for f in os.listdir(input_dir) 
+                         if f.endswith(('.xlsx', '.xls')) and not f.startswith('~$')]
+            
+            if not excel_files:
+                print("No Excel files found in the input directory.")
+                continue
+                
+            for file in excel_files:
+                try:
+                    file_path = os.path.join(input_dir, file)
+                    df = pd.read_excel(file_path)
+                    
+                    if 'Query' not in df.columns:
+                        print(f"No 'Query' column in {file}. Skipping.")
+                        continue
+                        
+                    print(f"\nProcessing {file}...")
+                    df['Category'] = df['Query'].apply(
+                        lambda q: categorizer.categorize_query(q, verbose=False))
+                        
+                    output_file = os.path.join(
+                        output_dir, f"Categorized_{os.path.splitext(file)[0]}.csv")
+                    df.to_csv(output_file, index=False)
+                    print(f"Saved categorized results to: {output_file}")
+                    
+                except Exception as e:
+                    print(f"Error processing {file}: {str(e)}")
+            
+        elif choice == '3':
+            print("\nRunning batch tests...")
+            test_cases = [
+                ("Identity number not provided", "ID Related"),
+                ("Premium incorrect", "Premium Issues"),
+                ("Beneficiary not selected", "Beneficiary Issues"),
+                ("Date of Birth not provided", "Date of Birth Issues")
+            ]
+            
+            correct = 0
+            for query, expected in test_cases:
+                actual = categorizer.categorize_query(query)
+                result = "✓" if actual == expected else "✗"
+                print(f"{result} Query: {query}")
+                print(f"   Expected: {expected}")
+                print(f"   Actual: {actual}\n")
+                if actual == expected:
+                    correct += 1
+                    
+            accuracy = (correct / len(test_cases)) * 100
+            print(f"Accuracy: {accuracy:.2f}% ({correct}/{len(test_cases)})")
+            
+        elif choice == '4':
+            print("Goodbye!")
+            break
+            
+        else:
+            print("Invalid choice! Please try again.")
 
 
 if __name__ == "__main__":
