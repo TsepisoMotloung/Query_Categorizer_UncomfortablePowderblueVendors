@@ -10,11 +10,13 @@ def initialize_nltk():
     nltk_data_dir = os.path.join(os.path.expanduser('~'), 'nltk_data')
     os.makedirs(nltk_data_dir, exist_ok=True)
 
+    print(f"NLTK data will be stored in: {nltk_data_dir}")
     required_packages = ['punkt', 'wordnet', 'stopwords']
     for package in required_packages:
         try:
             nltk.download(package, quiet=True, raise_on_error=True)
-            print(f"Successfully downloaded {package}")
+            package_dir = os.path.join(nltk_data_dir, package)
+            print(f"Successfully downloaded {package} to {package_dir}")
         except Exception as e:
             print(f"Error downloading {package}: {str(e)}")
             raise
