@@ -1,0 +1,88 @@
+Agent Code,Policy Number,Contact,Query,Status,Created By,Created,Last Chnaged,Category
+MSA4,UML719739,53274521,DECLARATION CHECK LIST NOT ATTACHED,open,Pontso Hlalele,"2024 Dec 31, 13:12","2024 Dec 31, 11:12",Other
+TM,TFS719384,57355166,Date of Birth not provided for spouse,open,Pontso Hlalele,"2024 Dec 31, 12:12","2024 Dec 31, 10:12",Date of Birth Issues
+CSB,UMA719111,69210665,Identity number not provided,resolved,Kabelo Molupe,"2024 Dec 31, 08:12","2024 Dec 31, 06:12",ID Related
+TM,TFS719640,58072251,Identity number not valid,open,Kabelo Molupe,"2024 Dec 31, 08:12","2024 Dec 31, 06:12",ID Related
+CSB,UMA719256,59017028,Beneficiary not selected,open,Kabelo Molupe,"2024 Dec 31, 08:12","2024 Dec 31, 08:12",Beneficiary Issues
+MSA2,1256931,58855428,Age -Client does not qualify for cover,resolved,Kabelo Molupe,"2024 Dec 31, 08:12","2025 Jan 03, 06:01",Other
+MSA70,UML719464,603828483,Date of Birth not provided for beneficiary,open,Pontso Hlalele,"2024 Dec 30, 17:12","2024 Dec 30, 15:12",Date of Birth Issues
+MSA70,UMA718587,604314600,Identity number not provided,open,Pontso Hlalele,"2024 Dec 24, 09:12","2024 Dec 24, 07:12",ID Related
+MSA46,UML718508,56502632,DECLARATION CHECK LIST,open,Pontso Hlalele,"2024 Dec 23, 16:12","2024 Dec 23, 16:12",Other
+SRN,MGS719353,58744642,Premium incorrect and beneficiary relationship not stated,open,Motselisi Chere,"2024 Dec 23, 11:12","2024 Dec 23, 09:12",Beneficiary Issues
+MSA69,UML718511,62200222,Premium incorrect,open,Motselisi Chere,"2024 Dec 23, 10:12","2024 Dec 23, 10:12",Premium Issues
+MSA32,UMA714967,59534043,Identity number incorrect - mainlife,resolved,Motselisi Chere,"2024 Dec 20, 13:12","2024 Dec 23, 06:12",ID Related
+MSA72,UMA718070,53549625,Identity number incorrect - nephew,open,Motselisi Chere,"2024 Dec 20, 10:12","2024 Dec 20, 08:12",ID Related
+ICB,UMA717264,51430995,Premium incorrect,open,Kabelo Molupe,"2024 Dec 20, 09:12","2024 Dec 20, 09:12",Premium Issues
+BBA22,UMA718531,50049939,RIDER-MOLEBE PREMIUM IS INCORRECT,open,Mosenyehi Mahoa,"2024 Dec 19, 16:12","2024 Dec 19, 16:12",ID Related
+TM,TFS718227,56536741,SPOUSE - Include spouse details,open,Pontso Hlalele,"2024 Dec 19, 16:12","2024 Dec 19, 14:12",Other
+MSA62,UML719116,50750770,Identity number incorrect - parent,resolved,Motselisi Chere,"2024 Dec 19, 15:12","2024 Dec 20, 05:12",ID Related
+GIB,UMA718471,58034119,Identity number incorrect - dependent,resolved,Motselisi Chere,"2024 Dec 19, 08:12","2024 Dec 19, 06:12",ID Related
+GIB,UMA718025,50691806,Identity number incorrect - spouse,resolved,Motselisi Chere,"2024 Dec 18, 18:12","2024 Dec 18, 16:12",ID Related
+GIB,UMA716882,58076331,Declaration Section - Not Completely Filled,open,Motselisi Chere,"2024 Dec 18, 17:12","2024 Dec 18, 17:12",Other
+MPA21,860092,53956711,K.Y.C Form not attached or incomplete - Phase 2,open,Motselisi Chere,"2024 Dec 18, 14:12","2024 Dec 18, 12:12",Other
+MSA21,UMA718412,56575871,RIDER BENEFIT - NOT INDICATED,resolved,Pontso Hlalele,"2024 Dec 18, 12:12","2024 Dec 19, 05:12",ID Related
+MSA21,873387,58105372,DECLARATION CHECK LIST NOT ATTACHED,resolved,Pontso Hlalele,"2024 Dec 18, 11:12","2024 Dec 18, 11:12",Other
+MSA5,UMA718171,58120033,Tshela requirements not met provide six latest proof of payments,resolved,Pontso Hlalele,"2024 Dec 18, 09:12","2024 Dec 30, 16:12",ID Related
+EXPLICIT BROKERS,UMA717506,59125571,Identity number not provided for Spouse,open,Pontso Hlalele,"2024 Dec 18, 08:12","2024 Dec 18, 06:12",ID Related
+TM,TGS718681,59751267,Beneficiary not selected,open,Kabelo Molupe,"2024 Dec 18, 07:12","2024 Dec 18, 07:12",Beneficiary Issues
+TM,TGS718682,59169852,Identity number not complete,open,Kabelo Molupe,"2024 Dec 18, 07:12","2024 Dec 18, 05:12",ID Related
+TM,TGS717665,59123359,Identity number not correct,resolved,Pontso Hlalele,"2024 Dec 16, 20:12","2024 Dec 16, 18:12",ID Related
+TM,UMA716313,655793434,Identity number incorrect - spouse,open,Motselisi Chere,"2024 Dec 16, 20:12","2024 Dec 16, 18:12",ID Related
+TM,UMA717701,57177678,Identity number not provided - spouse,open,Motselisi Chere,"2024 Dec 16, 20:12","2024 Dec 16, 18:12",ID Related
+MSA1,UMA717000,63504956,Signature not provided on checklist,resolved,Pontso Hlalele,"2024 Dec 16, 18:12","2024 Dec 30, 11:12",ID Related
+MSA73,UMA717132,57598187,Premium incorrect,open,Pontso Hlalele,"2024 Dec 16, 18:12","2024 Dec 16, 18:12",Premium Issues
+EXPLICIT BROKERS,UMA713420,59058771,Premium incorrect,open,Pontso Hlalele,"2024 Dec 16, 16:12","2024 Dec 16, 16:12",Premium Issues
+EXPLICIT BROKERS,UMA701163,50159888,PARENT - OVER AGE,open,Motselisi Chere,"2024 Dec 16, 15:12","2024 Dec 16, 15:12",Other
+MSA33,UMA718096,58974834,Tshela requirements not met - Amount on contract and payslip do not correspond,open,Motselisi Chere,"2024 Dec 16, 12:12","2024 Dec 16, 10:12",Other
+MSA41,1039185,57070412,POLICY HOLDER - OVER AGE,open,Pontso Hlalele,"2024 Dec 16, 11:12","2024 Dec 16, 11:12",Other
+MSA74,826507,58889529,Bank confirmation not clear,resolved,Kabelo Molupe,"2024 Dec 13, 08:12","2024 Dec 29, 13:12",Bank Confirmation
+MPA2,UMA716185,62626221,IDENTITY -PROVIDE INCOMPLETE IDENTITY ,open,Makatleho Seliete,"2024 Dec 12, 08:12","2024 Dec 12, 08:12",ID Related
+TM,TFS717960,62108221,Premium incorrect,open,Kabelo Molupe,"2024 Dec 11, 22:12","2024 Dec 11, 22:12",Premium Issues
+LIB,UMA717412,53963883,Identity number not correct for spouse,open,Pontso Hlalele,"2024 Dec 11, 16:12","2024 Dec 11, 14:12",ID Related
+LIB,UMA714377,63684840,Identity number not correct for mainlife,open,Pontso Hlalele,"2024 Dec 11, 16:12","2024 Dec 11, 14:12",ID Related
+LIB,UMA715590,58779727,RIDER-MAINLIFE DONT QUALIFY FOR MOLEBE,open,Pontso Hlalele,"2024 Dec 11, 15:12","2024 Dec 11, 13:12",ID Related
+ELM,UMA712123,58451139,AGE-OTHER DEPENDANT IS OVERAGE,open,Pontso Hlalele,"2024 Dec 11, 15:12","2024 Dec 11, 15:12",Other
+ICB,uma717712,59521024,STOP ORDER MANDATE - NOT PROVIDE STOP ORDER MANDATE FORM IN PRIVATE ,open,Pontso Hlalele,"2024 Dec 11, 09:12","2024 Dec 11, 09:12",ID Related
+MSA70,UMA717780,63102000,Beneficiary not selected,open,Kabelo Molupe,"2024 Dec 10, 22:12","2024 Dec 10, 22:12",Beneficiary Issues
+TM,UMA695640,62744099,Signature not provided,open,Kabelo Molupe,"2024 Dec 10, 22:12","2024 Dec 10, 22:12",ID Related
+TM,UMA716927,62155747,Premium incorrect,open,Kabelo Molupe,"2024 Dec 10, 22:12","2024 Dec 10, 22:12",Premium Issues
+BBA21,UMA715248,57039816,Premium incorrect,open,Mamoroesi Mokeretla,"2024 Dec 10, 17:12","2024 Dec 10, 17:12",Premium Issues
+ICB,UMA717713,57356250,STOP ORDER MANDATE - NOT PROVIDE STOP ORDER MANDATE FORM IN PRIVATE ,open,Pontso Hlalele,"2024 Dec 10, 15:12","2024 Dec 10, 15:12",ID Related
+ICB,UMA727712,57356250,STOP ORDER MANDATE - NOT PROVIDE STOP ORDER MANDATE FORM IN PRIVATE ,resolved,Pontso Hlalele,"2024 Dec 10, 15:12","2024 Dec 11, 07:12",ID Related
+MSA71,UMA717933,58188826,Identity number not correct,resolved,Pontso Hlalele,"2024 Dec 10, 15:12","2024 Dec 10, 13:12",ID Related
+MSA71,UMA717934,58188826,Identity number not provided,resolved,Pontso Hlalele,"2024 Dec 10, 15:12","2024 Dec 10, 13:12",ID Related
+MSA19,UMA714117,58595830,Identity number not correct for main life,open,Pontso Hlalele,"2024 Dec 10, 10:12","2024 Dec 10, 08:12",ID Related
+QNA15,UMA715403,57285062,Bank confirmation not attached,resolved,Mpho Chabana,"2024 Dec 10, 10:12","2025 Jan 03, 06:01",Bank Confirmation
+MSA19,UMA716557,57422205,Declaration Section - Not Completely Filled,resolved,Pontso Hlalele,"2024 Dec 10, 08:12","2024 Dec 10, 06:12",Other
+MSA61,UMA717648,839415268,Territorial Limits - Proof of Lesotho Residence to be Provided/Marriage Certificate,open,Pontso Hlalele,"2024 Dec 09, 17:12","2024 Dec 09, 17:12",ID Related
+GIB,UMA716749,26659445822,Identity number not correct for spouse,resolved,Pontso Hlalele,"2024 Dec 09, 12:12","2024 Dec 19, 05:12",ID Related
+GIB,UMA716809,53623416,Identity number incorrect - parent 2,open,Motselisi Chere,"2024 Dec 06, 10:12","2024 Dec 06, 08:12",ID Related
+GIB,UMA715283,67744441,K.Y.C Form not attached or incomplete - phase 2,resolved,Motselisi Chere,"2024 Dec 06, 10:12","2024 Dec 17, 09:12",Other
+GIB,UMA715284,67744441,K.Y.C Form not attached or incomplete - phase 2,open,Motselisi Chere,"2024 Dec 06, 10:12","2024 Dec 06, 08:12",Other
+MSA72,UMA716954,56534328,Beneficiary not selected,resolved,Pontso Hlalele,"2024 Dec 06, 09:12","2024 Dec 06, 07:12",Beneficiary Issues
+TM,TGS717351,57144436,Identity number not correct for mainlife,open,Pontso Hlalele,"2024 Dec 05, 18:12","2024 Dec 05, 16:12",ID Related
+BBA1,UMA716041,63180616,Affordability,resolved,Mosenyehi Mahoa,"2024 Dec 05, 14:12","2024 Dec 09, 16:12",Affordability
+BBA11,UMA716040,63180616,Affordability,resolved,Mosenyehi Mahoa,"2024 Dec 05, 14:12","2024 Dec 09, 16:12",Affordability
+BBA10,UMA716938,58770610,Affordability,resolved,Mosenyehi Mahoa,"2024 Dec 05, 14:12","2025 Jan 03, 06:01",Affordability
+MSA38,815751,59418247,Identity number not provided for parent,resolved,Pontso Hlalele,"2024 Dec 05, 12:12","2024 Dec 19, 05:12",ID Related
+ICB,UMA713098,62605705,Identity number incorrect - spouse,open,Motselisi Chere,"2024 Dec 05, 10:12","2024 Dec 05, 08:12",ID Related
+MSA72,UMA716397,51445510,PARENT - OVER AGE,open,Pontso Hlalele,"2024 Dec 05, 09:12","2024 Dec 05, 09:12",Other
+TM,TFS715655,63484818,Rider Premium incorrect for parent,open,Pontso Hlalele,"2024 Dec 05, 09:12","2024 Dec 05, 07:12",ID Related
+MSA1,UMA716999,53101077,Identity number not provided,open,Pontso Hlalele,"2024 Dec 04, 18:12","2024 Dec 04, 18:12",ID Related
+MPA2,UMA716968,59907630,Beneficiary not selected,resolved,Makatleho Seliete,"2024 Dec 04, 16:12","2025 Jan 03, 06:01",Beneficiary Issues
+MPA2,UMA716969,58817346,Beneficiary not selected,open,Makatleho Seliete,"2024 Dec 04, 16:12","2024 Dec 04, 16:12",Beneficiary Issues
+MPA2,UMA716185,62626221,Identity number not provided,open,Makatleho Seliete,"2024 Dec 04, 16:12","2024 Dec 04, 16:12",ID Related
+MSA72,UMA715997,56105266,DEDUCTION - NOT PROVIDED AND EMPLOYMENT NUMBER NOT PROVIDED,open,Pontso Hlalele,"2024 Dec 04, 14:12","2024 Dec 04, 12:12",ID Related
+BBA19,UMA715777,62455096,RELATIONSHIP-RELATIONSHIP OF PREMIUM PAYER AND BENEFICIARY NOT PROVIDED,resolved,Mamoroesi Mokeretla,"2024 Dec 04, 13:12","2025 Jan 03, 06:01",ID Related
+MSA2,1256931,58855428,Premium incorrect - spouse riders incorrect because of age,resolved,Motselisi Chere,"2024 Dec 04, 13:12","2025 Jan 13, 15:01",ID Related
+BBA22,uma715467,59741771,IDENTITY  - PROVIDE INCOMPLETE IDENTITY  OF POLICY HOLDER,resolved,Mamoroesi Mokeretla,"2024 Dec 04, 13:12","2025 Jan 03, 06:01",ID Related
+MSALEGAL67,UMA716210,58417309,RIDER-MOLEBE PREMIUM IS INCORRECT,resolved,Motselisi Chere,"2024 Dec 04, 12:12","2024 Dec 06, 10:12",ID Related
+MSALEGAL67,UMA717041,68896914,Identity number incorrect - spouse,resolved,Motselisi Chere,"2024 Dec 04, 11:12","2025 Jan 03, 06:01",ID Related
+MSA40,UMA716556,710163495,Identity number incorrect - mainlife,resolved,Motselisi Chere,"2024 Dec 04, 10:12","2025 Jan 03, 06:01",ID Related
+MSA35,UMA715863,58030898,Identity number not correct for spouse,resolved,Pontso Hlalele,"2024 Dec 03, 18:12","2025 Jan 03, 06:01",ID Related
+GIB,UMA717212,59642499,Premium incorrect,resolved,Pontso Hlalele,"2024 Dec 03, 16:12","2025 Jan 03, 06:01",Premium Issues
+GIB,UMA716676,56115061,Identity number not correct for main life,open,Pontso Hlalele,"2024 Dec 03, 16:12","2024 Dec 03, 14:12",ID Related
+MSA2,UMA717073,59557488,Identity Document not attached - premium payer for post bank,resolved,Motselisi Chere,"2024 Dec 03, 16:12","2025 Jan 03, 06:01",ID Related
+MSA2,UMA716562,58867231,Declaration Section - No Agent Signature,resolved,Motselisi Chere,"2024 Dec 03, 16:12","2024 Dec 03, 14:12",Signature Issues
+TM,UMA716188,58346135,AGE DIFFERENT BETWEEN CHILD AND SPOUSE,open,Pontso Hlalele,"2024 Dec 03, 15:12","2024 Dec 03, 13:12",Other
+TM,tfs716309,58436936,Identity number not provided,resolved,Pontso Hlalele,"2024 Dec 03, 15:12","2024 Dec 03, 13:12",ID Related
