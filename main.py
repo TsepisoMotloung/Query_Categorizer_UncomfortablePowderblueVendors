@@ -180,6 +180,11 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import pandas as pd
 import nltk
+
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('stopwords')
+
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -651,9 +656,7 @@ class AdvancedQueryCategorizationTool:
                             category_counts[category] = count
 
                     # Save to output directory
-                    output_file = os.path.join(
-                        self.output_directory,
-                        f"Categorized_{os.path.splitext(file)[0]}.csv")
+                    output_file = os.path.join(self.output_directory,f"Categorized_{os.path.splitext(file)[0]}.csv")
                     df.to_csv(output_file, index=False)
 
                     # Add to all processed data for analysis
@@ -842,7 +845,7 @@ class AdvancedQueryCategorizationTool:
       # Display results
       accuracy = (correct / len(test_cases)) * 100 if test_cases else 0
 
-      self.test_result_text.insert(tk.END, f"BATCH TEST RESULTS\n", "header")
+      self.test_result_text.insert(tk.END, "BATCH TEST RESULTS\n", "header")
       self.test_result_text.insert(tk.END, f"Accuracy: {accuracy:.2f}% ({correct}/{len(test_cases)})\n\n")
 
       # Display individual results
@@ -857,7 +860,7 @@ class AdvancedQueryCategorizationTool:
           if is_match:
               self.test_result_text.insert(tk.END, f"   Actual: {actual}\n\n")
           else:
-              self.test_result_text.insert(tk.END, f"   Actual: ", "normal")
+              self.test_result_text.insert(tk.END, "   Actual: ", "normal")
               self.test_result_text.insert(tk.END, f"{actual}\n\n", "incorrect")
 
       # Apply text tags
@@ -928,7 +931,7 @@ class AdvancedQueryCategorizationTool:
           # Show misclassifications
           if category_matches < category_total:
               misclassified = category_df[category_df['Original_Category'] != category_df['Category']]
-              results_text.insert(tk.END, f"  Misclassified as:\n")
+              results_text.insert(tk.END, "  Misclassified as:\n")
 
               for wrong_cat, count in misclassified['Category'].value_counts().items():
                   results_text.insert(tk.END, f"    - {wrong_cat}: {count}\n")
