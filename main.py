@@ -5,9 +5,6 @@ from tkinter import filedialog, messagebox, ttk
 import pandas as pd
 import nltk
 
-import nltk
-import os
-
 def initialize_nltk():
     """Initialize NLTK by downloading required datasets"""
     nltk_data_dir = os.path.join(os.path.expanduser('~'), 'nltk_data')
