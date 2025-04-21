@@ -921,6 +921,7 @@ def main():
         print("2. Process files")
         print("3. Run batch tests")
         print("4. Exit")
+        print(f"Current working directory: {os.getcwd()}")
         
         choice = input("\nEnter your choice (1-4): ")
         
